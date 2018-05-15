@@ -191,6 +191,16 @@ for (i in levels(t_naplo$USER)) {
   p1,
   width = 12, height = 7, dpi = 300
   )
+  
+  # Copy to publish folder
+  try(file.copy(
+    here::here(
+      "Reports", floor_date(Sys.Date(), "day"), "DOLGOZO",
+      paste0(i, ".png")),
+    "C:/Users/PoorJ/Publish/Live/Napi-Darabok/DOLGOZO",
+    overwrite = T
+  ))
+  
 }
 
 # Plot tasks per group ------------------------------------------------------------------
@@ -228,6 +238,17 @@ for (i in levels(t_utso$CSOPORT)) {
   p1,
   width = 12, height = 7, dpi = 300
   )
+  
+ # Copy to publish folder
+try(file.copy(
+  here::here(
+    "Reports", floor_date(Sys.Date(), "day"), "CSOPORT",
+    paste0(i, ".png")
+  ),
+  "C:/Users/PoorJ/Publish/Live/Napi-Darabok/CSOPORT",
+  overwrite = T
+))
+  
 }
 
 # Save xlsx with cumulated values to local storage
@@ -243,6 +264,15 @@ write.xlsx(t_kum_dolgozo,
   row.names = FALSE
 )
 
+# Copy to publish folder
+try(file.copy(
+  here::here(
+    "Reports", floor_date(Sys.Date(), "day"),
+    paste0("t_kumulalt_most_", floor_date(Sys.Date(), "day"), ".xlsx")
+  ),
+  "C:/Users/PoorJ/Publish/Live/Napi-Darabok",
+  overwrite = T
+))
 
 # Redirect stdout back to console
 sink(type = "message")
