@@ -214,7 +214,7 @@ t_utso <- t_naplo %>%
   group_by(IDOPONT, CSOPORT, FELADAT) %>%
   summarize(DB_TOTAL = sum(DB_TOTAL))
 
-t_idopont <- unique(t_utso$IDOPONT)
+t_idopont <- max(t_utso$IDOPONT)
 
 for (i in levels(t_utso$CSOPORT)) {
   t_csoport <- t_utso %>%
