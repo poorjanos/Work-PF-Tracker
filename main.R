@@ -193,6 +193,9 @@ for (i in levels(t_naplo$USER)) {
   )
   
   # Copy to publish folder
+  files <- list.files("C:/Users/PoorJ/Publish/Live/Napi-Darabok/DOLGOZO", full.names = TRUE)
+  file.remove(files)
+  
   try(file.copy(
     here::here(
       "Reports", floor_date(Sys.Date(), "day"), "DOLGOZO",
@@ -240,14 +243,17 @@ for (i in levels(t_utso$CSOPORT)) {
   )
   
  # Copy to publish folder
-try(file.copy(
+  files <- list.files("C:/Users/PoorJ/Publish/Live/Napi-Darabok/CSOPORT", full.names = TRUE)
+  file.remove(files)
+  
+  try(file.copy(
   here::here(
     "Reports", floor_date(Sys.Date(), "day"), "CSOPORT",
     paste0(i, ".png")
   ),
   "C:/Users/PoorJ/Publish/Live/Napi-Darabok/CSOPORT",
   overwrite = T
-))
+  ))
   
 }
 
