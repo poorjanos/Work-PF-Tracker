@@ -166,6 +166,10 @@ write.csv(t_naplo,
 #########################################################################################
 
 # Plot tasks per user -------------------------------------------------------------------
+# Clear off target folder
+files <- list.files("C:/Users/PoorJ/Publish/Live/Napi-Darabok/DOLGOZO/", full.names = TRUE)
+try(file.remove(files))
+
 for (i in levels(t_naplo$USER)) {
   t_user <- t_naplo[t_naplo[["USER"]] == i, ]
   t_user <- arrange(t_user, DATUM, IDOSZAK, FELADAT)
@@ -193,8 +197,6 @@ for (i in levels(t_naplo$USER)) {
   )
   
   # Copy to publish folder
-  try(file.remove(paste0("C:/Users/PoorJ/Publish/Live/Napi-Darabok/DOLGOZO/", i, ".png")))
-  
   try(file.copy(
     here::here(
       "Reports", floor_date(Sys.Date(), "day"), "DOLGOZO",
@@ -218,6 +220,10 @@ t_utso <- t_naplo %>%
   summarize(DB_TOTAL = sum(DB_TOTAL))
 
 t_idopont <- max(t_utso$IDOPONT)
+
+# Clear off target folder
+files <- list.files("C:/Users/PoorJ/Publish/Live/Napi-Darabok/CSOPORT/", full.names = TRUE)
+try(file.remove(files))
 
 for (i in levels(t_utso$CSOPORT)) {
   t_csoport <- t_utso %>%
@@ -243,8 +249,6 @@ for (i in levels(t_utso$CSOPORT)) {
   )
   
  # Copy to publish folder
-  try(file.remove(paste0("C:/Users/PoorJ/Publish/Live/Napi-Darabok/CSOPORT/", i, ".png")))
-  
   try(file.copy(
   here::here(
     "Reports", floor_date(Sys.Date(), "day"), "CSOPORT",
