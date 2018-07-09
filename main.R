@@ -18,7 +18,7 @@ library(ggiraph)
 library(xlsx)
 
 # Quit if sysdate == weekend ------------------------------------------------------------
-stopifnot(!(strftime(Sys.Date(), '%u') == 7 | hour(Sys.time()) >= 18))
+stopifnot(!(strftime(Sys.Date(), '%u') == 7 | hour(Sys.time()) > 18))
 
 # Create default dirs
 dir.create(here::here("Reports"), showWarnings = FALSE)
